@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aarohi 💗</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #ff4d6d, #ffb3c6);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-align: center;
+      color: white;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 400px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.2s;
+    }
+
+    #yesBtn {
+      background: #00c853;
+      color: white;
+    }
+
+    #noBtn {
+      background: #d50000;
+      color: white;
+      position: relative;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: floatUp 4s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-800px) scale(1.8);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<audio id="bgMusic" controls loop preload="auto">
+  <source src="audio/music.wav" type="audio/wav">
+</audio>
+
+
+  <div class="card">
+    <h1>Hey Aarohi 💖</h1>
+
+    <img src="images/together.jpg" width="250"
+    style="border-radius:20px; margin-bottom:15px; box-shadow:0 0 15px rgba(0,0,0,0.4);">
+
+    <p>
+      I have a small question for you...  
+      <br><br>
+      Will you be my valentine?? 🌹
+    </p>
+
+    <button id="yesBtn">Yes 💍</button>
+    <button id="noBtn">No 🙄</button>
+
+    <div id="message">
+      Balle balle!! 😭💗  
+      <br>
+      You just made my Valentine😋 perfect 🥺🌸  
+      <br><br>
+      I Love You Bauwaaaa🤧❤️
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("message");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.floor(Math.random() * 250) - 100;
+      const y = Math.floor(Math.random() * 250) - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    noBtn.addEventListener("click", () => {
+      const x = Math.floor(Math.random() * 250) - 100;
+      const y = Math.floor(Math.random() * 250) - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      message.style.display = "block";
+      const music = document.getElementById("bgMusic");
+      music.volume = 0.4;
+      music.play();
+      createHearts();
+    });
+
+    function createHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "100vh";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+      }, 200);
+    }
+  </script>
+
+</body>
+</html>
